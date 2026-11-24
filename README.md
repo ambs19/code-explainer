@@ -118,6 +118,12 @@ Run the unit tests for the Python checks (no model needed):
 python -m pytest harness_tests -q
 ```
 
+## Deliverables
+
+- Project document: [docs/Project_Document.pdf](docs/Project_Document.pdf) (source: `docs/project_document.html`)
+- Presentation: [docs/Code_Explainer_Presentation.pptx](docs/Code_Explainer_Presentation.pptx) (speaker notes included)
+- Workflow diagram: [docs/workflow.svg](docs/workflow.svg); terminal screenshots from real runs: [docs/screenshots/](docs/screenshots)
+
 ## Results
 
 See [RESULTS.md](RESULTS.md) for the latest `evaluate.py` numbers.
