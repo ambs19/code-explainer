@@ -1,0 +1,11 @@
+{
+  "A: average -> none_found": "3/3",
+  "B: no tests -> suspected": "3/3",
+  "S2: no tests -> never 'verified'": "3/3",
+  "C: with tests -> verified": "3/3",
+  "S3: after the failure, reads apply_rate": "3/3",
+  "S3+: cites the '* 100' line itself": "0/3",
+  "D: missing function -> honest not-found": "3/3",
+  "S1: misspelled name -> list_functions or retry, then real answer": "3/3",
+  "S4": "10/10"
+}
