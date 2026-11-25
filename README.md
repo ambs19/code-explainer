@@ -25,16 +25,10 @@ If the function does not exist, the agent must say so honestly instead of invent
 
 ## How it works
 
-```
-question ─► model proposes ONE JSON action ─► Python validates it
-                 ▲                               │
-                 │                ┌──────────────┴──────────────┐
-                 │            invalid                         valid
-                 │       (error names the                 run the tool
-                 │        valid options)                       │
-                 └──────────── observation ◄───────────────────┘
-stop when: an `explain` passes checks.py (done) · 15 steps (max_steps) · same rejected action 3 times (stuck)
-```
+![Agent workflow: the model chooses one action, Python validates and runs it, the observation goes back to the model; explain answers go through evidence checks](docs/workflow.png)
+
+The run stops when an `explain` passes checks.py (done), after 15 steps (max_steps),
+or when the same rejected action is proposed 3 times (stuck).
 
 - Model: `qwen3:8b` through Ollama (local), JSON output, temperature 0.2.
 - The system prompt describes the tools and rules but **does not fix an order**. The model decides
@@ -118,11 +112,11 @@ Run the unit tests for the Python checks (no model needed):
 python -m pytest harness_tests -q
 ```
 
-## Deliverables
+## Documentation
 
-- Project document: [docs/Project_Document.pdf](docs/Project_Document.pdf) (source: `docs/project_document.html`)
-- Presentation: [docs/Code_Explainer_Presentation.pptx](docs/Code_Explainer_Presentation.pptx) (speaker notes included)
-- Workflow diagram: [docs/workflow.svg](docs/workflow.svg); terminal screenshots from real runs: [docs/screenshots/](docs/screenshots)
+- [Project document (PDF)](docs/Project_Document.pdf)
+- [Presentation (PPTX)](docs/Code_Explainer_Presentation.pptx)
+- [Terminal screenshots from real runs](docs/screenshots/)
 
 ## Results
 
