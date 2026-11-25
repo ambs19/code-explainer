@@ -71,6 +71,14 @@ def show(label, text):
     print(f"  {label}: {text}")
 
 
+def display_path(path):
+    """Show paths relative to this repository, so traces and output contain no machine paths."""
+    try:
+        return str(Path(path).resolve().relative_to(Path(__file__).resolve().parent))
+    except ValueError:
+        return Path(path).name
+
+
 def run_agent(question, project_dir, trace_path=None, verbose=True):
     """Run one episode. Returns a result dict with status, final answer, and full trace."""
     state = AgentState(project_dir)
@@ -85,7 +93,7 @@ def run_agent(question, project_dir, trace_path=None, verbose=True):
     rejected_counts = {}   # rejected action -> how many times it was proposed
 
     if verbose:
-        print(f"\nQUESTION: {question}\nPROJECT:  {project_dir}\n")
+        print(f"\nQUESTION: {question}\nPROJECT:  {display_path(project_dir)}\n")
 
     for step in range(1, MAX_STEPS + 1):
         raw = call_model(messages)
@@ -139,7 +147,7 @@ def run_agent(question, project_dir, trace_path=None, verbose=True):
 
     result = {
         "question": question,
-        "project_dir": str(project_dir),
+        "project_dir": display_path(project_dir),
         "model": MODEL_NAME,
         "status": status,
         "outcome": outcome,

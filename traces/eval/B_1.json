@@ -1,6 +1,6 @@
 {
   "question": "Explain what the function discount_price does and whether it has a bug.",
-  "project_dir": "/Users/gff/Documents/code-explainer/sample_project_no_tests",
+  "project_dir": "sample_project_no_tests",
   "model": "qwen3:8b",
   "status": "done",
   "outcome": "explained",

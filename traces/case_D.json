@@ -1,6 +1,6 @@
 {
   "question": "Explain what the function calculate_tax does and whether it has a bug.",
-  "project_dir": "/Users/gff/Documents/code-explainer/sample_project",
+  "project_dir": "sample_project",
   "model": "qwen3:8b",
   "status": "done",
   "outcome": "not_found",
