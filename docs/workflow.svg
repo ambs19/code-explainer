@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 770 532" font-family="Arial, Helvetica, sans-serif" font-size="13">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B91C1C"/>
+    </marker>
+  </defs>
+  <style>
+    .box{fill:#F1F5F9;stroke:#334155;stroke-width:1.4}
+    .model{fill:#0F766E;stroke:#0F766E}
+    .py{fill:#1E293B;stroke:#1E293B}
+    .bad{fill:#FEF2F2;stroke:#B91C1C;stroke-width:1.4}
+    .good{fill:#ECFDF5;stroke:#047857;stroke-width:1.6}
+    .pill{fill:#FFFFFF;stroke:#0F766E;stroke-width:1.4}
+    .w{fill:#FFFFFF}
+    .t{fill:#0F172A}
+    .lbl{fill:#475569;font-size:12}
+    .rl{fill:#B91C1C;font-size:12}
+    .ln{stroke:#334155;stroke-width:1.6;fill:none}
+    .rd{stroke:#B91C1C;stroke-width:1.6;fill:none;stroke-dasharray:5 4}
+    .mono{font-family:"Courier New",monospace;font-size:13}
+  </style>
+
+  <!-- question -->
+  <rect class="box" x="260" y="10" width="240" height="40" rx="8"/>
+  <text class="t" x="380" y="35" text-anchor="middle">User question about one function</text>
+  <path class="ln" d="M380,50 V78" marker-end="url(#a)"/>
+
+  <!-- model -->
+  <rect class="model" x="260" y="80" width="240" height="46" rx="8"/>
+  <text class="w" x="380" y="100" text-anchor="middle" font-weight="bold">Model (qwen3:8b)</text>
+  <text class="w" x="380" y="117" text-anchor="middle" font-size="12">chooses ONE JSON action + reason</text>
+  <path class="ln" d="M380,126 V168" marker-end="url(#a)"/>
+
+  <!-- validate -->
+  <rect class="py" x="260" y="170" width="240" height="40" rx="8"/>
+  <text class="w" x="380" y="195" text-anchor="middle" font-weight="bold">Python validates the action</text>
+
+  <!-- invalid -->
+  <path class="rd" d="M500,190 H558" marker-end="url(#r)"/>
+  <text class="rl" x="507" y="183">invalid</text>
+  <rect class="bad" x="560" y="170" width="180" height="40" rx="8"/>
+  <text class="t" x="650" y="187" text-anchor="middle" font-size="12">Error that names the</text>
+  <text class="t" x="650" y="202" text-anchor="middle" font-size="12">valid tools / arguments</text>
+  <path class="rd" d="M650,170 V112 H502" marker-end="url(#r)"/>
+
+  <!-- valid -> tools -->
+  <path class="ln" d="M330,210 V258" marker-end="url(#a)"/>
+  <text class="lbl" x="230" y="240">valid tool call</text>
+  <rect class="box" x="20" y="260" width="480" height="70" rx="8"/>
+  <text class="lbl" x="34" y="278">read-only tools (the model decides which, and when)</text>
+  <rect class="pill" x="34" y="288" width="140" height="30" rx="15"/>
+  <text class="t mono" x="104" y="308" text-anchor="middle">list_functions</text>
+  <rect class="pill" x="190" y="288" width="140" height="30" rx="15"/>
+  <text class="t mono" x="260" y="308" text-anchor="middle">read_function</text>
+  <rect class="pill" x="346" y="288" width="140" height="30" rx="15"/>
+  <text class="t mono" x="416" y="308" text-anchor="middle">run_tests</text>
+
+  <!-- valid -> explain -->
+  <path class="ln" d="M450,210 V235 H650 V258" marker-end="url(#a)"/>
+  <text class="lbl" x="530" y="229">valid explain</text>
+  <rect class="box" x="560" y="260" width="180" height="50" rx="8"/>
+  <text class="t mono" x="650" y="282" text-anchor="middle" font-weight="bold">explain</text>
+  <text class="lbl" x="650" y="299" text-anchor="middle">final answer + evidence</text>
+
+  <!-- observation -->
+  <path class="ln" d="M260,330 V368" marker-end="url(#a)"/>
+  <rect class="box" x="20" y="370" width="480" height="40" rx="8"/>
+  <text class="t" x="260" y="395" text-anchor="middle">Observation (real tool output) is added to the conversation</text>
+  <path class="ln" d="M20,390 H8 V103 H258" marker-end="url(#a)"/>
+  <text class="lbl" x="24" y="160" transform="rotate(-90 24 160)" text-anchor="middle">next decision</text>
+
+  <!-- checks -->
+  <path class="ln" d="M650,310 V368" marker-end="url(#a)"/>
+  <rect class="py" x="560" y="370" width="180" height="50" rx="8"/>
+  <text class="w" x="650" y="391" text-anchor="middle" font-weight="bold">checks.py</text>
+  <text class="w" x="650" y="408" text-anchor="middle" font-size="12">is every claim real evidence?</text>
+  <path class="rd" d="M740,395 H756 V92 H502" marker-end="url(#r)"/>
+  <text class="rl" x="560" y="86">rejected by checks: reason</text>
+
+  <!-- done -->
+  <path class="ln" d="M650,420 V458" marker-end="url(#a)"/>
+  <text class="lbl" x="658" y="444">accepted</text>
+  <rect class="good" x="560" y="460" width="180" height="62" rx="8"/>
+  <text class="t" x="650" y="481" text-anchor="middle" font-weight="bold">Done</text>
+  <text class="t" x="650" y="499" text-anchor="middle" font-size="12">verified · suspected ·</text>
+  <text class="t" x="650" y="512" text-anchor="middle" font-size="12">none_found · not found</text>
+
+  <!-- stop rules -->
+  <text class="lbl" x="20" y="470">Stop conditions:</text>
+  <text class="t" x="20" y="490">accepted explain (done) · 15 steps (max_steps) ·</text>
+  <text class="t" x="20" y="508">same rejected action 3 times (stuck)</text>
+</svg>
